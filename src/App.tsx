@@ -119,7 +119,7 @@ export default class App extends Component<{},{data:dataProps[],currentDate:any,
       </Paper>
       <br/><br/>
       <Button label="Conteggio ore" icon="pi pi-spinner" className="p-button-success" iconPos="right" onClick={()=>this.showDialog()} />
-      <Dialog header="Conteggio ore" footer={this.renderFooterDialog.call(this)} modal visible={this.state.dialogVisible} style={{width: '50vw'}} onHide={()=>this.hideDialog()}>
+      <Dialog header="Conteggio ore" footer={this.renderFooterDialog.call(this)} modal visible={this.state.dialogVisible} style={{minWidth: '50vw',maxWidth:'95vw'}} onHide={()=>this.hideDialog()}>
         <br/><br/>
         <div style={{display:'flex',gap:'2rem'}}>
           <div className="field col-12 md:col-4">
