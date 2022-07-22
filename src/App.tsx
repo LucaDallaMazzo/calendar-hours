@@ -104,7 +104,7 @@ export default class App extends Component<{},appProps>{
           firstDayOfWeek={1}
         >
           <ViewState
-            currentDate={currentDate}
+            defaultCurrentDate={currentDate}
           />
           <EditingState
             onCommitChanges={this.commitChanges}
