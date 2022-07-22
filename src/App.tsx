@@ -24,16 +24,27 @@ interface dataProps {
   endDate:string|Date;
   id:any;
   title?:string;
-  [key:string]:any
+  [key:string]:any;
+}
+interface appProps {
+  data:dataProps[];
+  currentDate:any;
+  dialogVisible:boolean;
+  countStartDate?:Date;
+  countEndDate?:Date;
+  countedHours?:number;
 }
 
-export default class App extends Component<{},{data:dataProps[],currentDate:any,dialogVisible:boolean,countStartDate?:Date,countEndDate?:Date,countedHours?:number}>{
+export default class App extends Component<{},appProps>{
   constructor(props:any) {
     super(props);
+    let now = new Date()
     this.state = {
       data: JSON.parse(window.localStorage?.scheduledHours??"{}")?.data??[],
-      currentDate: new Date(),
-      dialogVisible:false
+      currentDate: now,
+      dialogVisible:false,
+      countStartDate:new Date(now.getFullYear(),now.getMonth(),1),
+      countEndDate:new Date(now.getFullYear(),now.getMonth()+1,0)
     };
 
     this.commitChanges = this.commitChanges.bind(this);
@@ -139,7 +150,7 @@ export default class App extends Component<{},{data:dataProps[],currentDate:any,
           </div>
         </div>
         <br/><br/>
-        <span>{this.state.countedHours}</span>
+        <span style={{color:"#9c27b0",fontWeight:'bold'}}>{this.state.countedHours}</span>
       </Dialog>
       </>
     )
